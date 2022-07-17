@@ -13,7 +13,7 @@
   justify-self: center;
 }
 .chart {
-  width: 30rem;
+  width: 45rem;
   transition: all 1s ease-out;
   max-height: 0;
   margin: 0 auto;
@@ -34,7 +34,7 @@
   justify-items: center ;
  max-height: 0;
   overflow: hidden;
-  font-size: 10px;
+  font-size: 16px;
   line-height: 1;
 }
 
@@ -54,10 +54,9 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   margin: 0;
-  column-gap: 0.5rem;
-  row-gap: 0.2rem;
+ gap: 0.5rem;
   background-color: rgb(26, 18, 39);
-  padding: 0.3rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
 }
 
