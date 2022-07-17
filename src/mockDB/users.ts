@@ -58,4 +58,7 @@ console.log('gD:', graphData);
 console.log('ageGroup:', ageGroup);
 */
 
+// eslint-disable-next-line no-console
+console.log('users', users);
+
 export default users;
