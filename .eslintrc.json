@@ -1,0 +1,64 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "ignorePatterns": [
+        "**/*.html"
+    ],
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "settings": {
+        "import/resolver": {
+            "typescript": {}
+        }
+    },
+    "rules": {
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "react/jsx-filename-extension": [
+            "warn", {"extensions": [".tsx"]}
+        ],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+            "ts": "never",
+            "tsx": "never"
+            }
+        ],
+        "react/react-in-jsx-scope": 0,
+        "prettier/prettier": ["error"],
+        "no-unused-vars": 0,
+        "no-undef": 0,
+        "react/function-component-definition": 0,
+        "react/prop-types": 0,
+        "react/button-has-type": 0,
+        "react/jsx-props-no-spreading": 0,
+        "no-nested-ternary": 0,
+        "jsx-a11y/click-events-have-key-events": 0,
+        "jsx-a11y/no-noninteractive-element-interactions": 0,
+        "jsx-a11y/label-has-associated-control": 0,
+        "no-prototype-builtins":0,
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+        "no-shadow": 0,
+        "no-plusplus": 0,
+        "no-param-reassign": 0
+    }
+}
