@@ -15,7 +15,7 @@ import {
   ActiveDataPoint
 } from 'chart.js';
 import { observer } from 'mobx-react-lite';
-import userStore from 'store/mobX';
+import userStore from '../../store/mobX';
 
 const LineChart = observer(() => {
   // configuring the chart library
@@ -31,8 +31,8 @@ const LineChart = observer(() => {
         data: userStore.graphData,
         borderColor: 'rgb(196, 107, 248)',
         backgroundColor: 'rgba(57, 1, 59, 0.5)',
-        tension: 0.1,
-        borderWidth: 2
+        tension: 0.2,
+        borderWidth: 3
       }
     ]
   };
@@ -68,8 +68,6 @@ const LineChart = observer(() => {
     onClick(event: ChartEvent, elements: ActiveElement[], chart: Chart) {
       if (elements.length) {
         const activePoint: ActiveDataPoint = elements[0];
-        console.log(activePoint.index);
-
         userStore.setShowList(true);
         userStore.setActiveIndex(activePoint.index);
       } else {
