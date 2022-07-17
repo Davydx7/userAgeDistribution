@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 
 import { observer } from 'mobx-react-lite';
 
-import 'App.css';
-import LineChart from 'components/lineChart';
+import './App.css';
+import LineChart from './components/lineChart';
 
 // mock data
-import users from 'mockDB/users';
+import users from './mockDB/users';
 
-import userStore from 'store/mobX';
+import userStore from './store/mobX';
 
 // console.log(users);
 
