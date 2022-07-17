@@ -7,42 +7,78 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  ChartEvent,
+  ActiveElement,
+  Chart,
+  ChartOptions,
+  ActiveDataPoint
 } from 'chart.js';
-import { faker } from '@faker-js/faker';
 import { observer } from 'mobx-react-lite';
-import userStore from 'Store/mobX';
+import userStore from 'store/mobX';
 
-// configuring the chart library
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+const LineChart = observer(() => {
+  // configuring the chart library
+  ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top' as const
+  const labels = Object.keys(userStore.graphData);
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: 'Users',
+        data: userStore.graphData,
+        borderColor: 'rgb(196, 107, 248)',
+        backgroundColor: 'rgba(57, 1, 59, 0.5)',
+        tension: 0.1,
+        borderWidth: 2
+      }
+    ]
+  };
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: true,
+    scales: {
+      x: {
+        title: {
+          color: '#cc78e4',
+          display: true,
+          text: 'Ages'
+        }
+      },
+      y: {
+        title: {
+          color: '#cc78e4',
+          display: true,
+          text: 'Number of users'
+        }
+      }
     },
-    title: {
-      display: true,
-      text: 'Chart.js Line Chart'
+    plugins: {
+      legend: {
+        position: 'top' as const
+      },
+      title: {
+        display: true,
+        text: 'Users age distribution (18-60)'
+      }
+    },
+    onClick(event: ChartEvent, elements: ActiveElement[], chart: Chart) {
+      if (elements.length) {
+        const activePoint: ActiveDataPoint = elements[0];
+        console.log(activePoint.index);
+
+        userStore.setShowList(true);
+        userStore.setActiveIndex(activePoint.index);
+      } else {
+        userStore.setShowList(false);
+      }
     }
-  }
-};
+  };
 
-const labels = Object.keys(userStore.graphData);
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: userStore.graphData,
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)'
-    }
-  ]
-};
-
-const LineChart: React.FC = observer(() => <Line options={options} data={data} />);
+  return <Line data={data} options={options} />;
+});
 
 export default LineChart;

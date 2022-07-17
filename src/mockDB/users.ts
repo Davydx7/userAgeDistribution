@@ -1,7 +1,11 @@
-// Mock data Generator
-
 import { faker } from '@faker-js/faker';
 
+// Config Data;
+const dataSize: number = 500;
+const minAge: number = 18;
+const maxAge: number = 60;
+
+// Mock Data Generator
 export type user = {
   id: number;
   name: string;
@@ -10,19 +14,17 @@ export type user = {
 
 const users: user[] = [];
 
-// age between 15 and 65;
-[...Array(500).keys()].map((i) => {
+[...Array(dataSize).keys()].map((i) => {
   users.push({
     id: i + 1,
     name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-    age: faker.datatype.number({ min: 15, max: 30 })
+    age: faker.datatype.number({ min: minAge, max: maxAge })
   });
 
   return users;
 });
 
 // Testing Data extraction directly, before using MobX
-
 /*
 type GraphData = {
   [key: string]: number;

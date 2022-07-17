@@ -1,5 +1,5 @@
 import { makeObservable, observable, computed, action, flow, toJS } from 'mobx';
-import { user } from '../DB/users';
+import { user } from '../mockDB/users';
 
 type GraphData = {
   [key: string]: number;
@@ -13,7 +13,10 @@ interface Store {
   userData: user[];
   graphData: GraphData; // data extract for graph
   ageGroup: AgeGroup; // data extract for agegroup name list
-  getAggregate(): void;
+  showList: boolean;
+  activeIndex: number;
+  setShowList: (s: boolean) => void;
+  getExtract(): void;
   fetchUsers(u: user[]): void;
 }
 
@@ -24,19 +27,34 @@ class UserStore implements Store {
 
   ageGroup: AgeGroup = {};
 
+  showList: boolean = false;
+
+  activeIndex: number = 0;
+
   constructor() {
     makeObservable(this, {
       userData: observable,
       graphData: observable,
       ageGroup: observable,
-      getAggregate: action,
+      showList: observable,
+      activeIndex: observable,
+      setShowList: action,
+      setActiveIndex: action,
+      getExtract: action,
       fetchUsers: action
     });
   }
 
-  // process data inot {age: count} format
+  setShowList(s: boolean): void {
+    this.showList = s;
+  }
 
-  getAggregate(): void {
+  setActiveIndex(index: number): void {
+    this.activeIndex = index;
+  }
+
+  // graphData and ageGroup method
+  getExtract(): void {
     const graphData: GraphData = {};
     const ageGroup: AgeGroup = {};
 
@@ -71,7 +89,7 @@ class UserStore implements Store {
     // processing graphData and ageGroup immediately
     // as the data is already available and not going
     // to change after the fetch
-    this.getAggregate();
+    this.getExtract();
   }
 }
 

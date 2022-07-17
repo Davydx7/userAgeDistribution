@@ -3,31 +3,43 @@ import { useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import 'App.css';
-import LineChart from 'Components/LineChart';
+import LineChart from 'components/lineChart';
 
 // mock data
-import users from 'DB/users';
+import users from 'mockDB/users';
 
-import userStore from 'Store/mobX';
+import userStore from 'store/mobX';
 
 // console.log(users);
 
 const App = observer(() => {
-  const [count, setCount] = useState(0);
-
   useEffect(() => {
+    // supposed API call
     userStore.fetchUsers(users);
-    // console.log(users);
-    console.log(userStore.userData[0].name);
-  }, []);
+  }, [userStore]);
+
+  const [show, setShow] = useState(false);
+
+  const handleClick = () => {
+    setShow(!show);
+    // hide list with chart
+    userStore.setShowList(false);
+  };
 
   return (
     <div className="App">
-      <LineChart />
-      {userStore.userData.length && <p>{userStore.userData[0].name}</p>}
-      <canvas id="myChart" width="400" height="400" />
-      <div className="card">
-        <button onClick={() => setCount((counti) => counti + 1)}>count is {count}</button>
+      <div className="topbar">
+        <button onClick={handleClick}>{show ? 'Hide Chart' : 'Show Chart'}</button>
+      </div>
+      <div className={`chart ${show ? 'open' : ''}`}>{show && <LineChart />}</div>
+      <div className={`list ${show && userStore.showList ? 'open' : ''}`}>
+        <span>Users</span>
+        <ul>
+          {userStore.userData.length &&
+            Object.values(userStore.ageGroup)[userStore.activeIndex].map((name) => (
+              <li key={name}>{name}</li>
+            ))}
+        </ul>
       </div>
     </div>
   );

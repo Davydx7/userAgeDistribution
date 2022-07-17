@@ -1,41 +1,78 @@
-#root {
-  max-width: 1280px;
+.App {
+  padding: 0.5rem;
+  /* display: grid; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  gap: 0.5rem;
+}
+
+.topbar {
+  justify-self: center;
+}
+.chart {
+  width: 30rem;
+  transition: all 1s ease-out;
+  max-height: 0;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  text-align: left;
+  background-color: rgb(21, 19, 32);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.chart.open {
+  max-height: 50rem;
+  transition: all 1s ease-out;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.list {
+  display: grid;
+  justify-items: center ;
+ max-height: 0;
+  overflow: hidden;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.list.open {
+  max-height: 50rem;
+  transition: all 1s ease-out;
+}
+
+.list span {
+  font-weight: 600;
+  padding: 0.2rem;
+
+}
+
+.list ul {
+ list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: 0;
+  column-gap: 0.5rem;
+  row-gap: 0.2rem;
+  background-color: rgb(26, 18, 39);
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+}
+
+
+.list ul li {
+  font-weight: 500;
+  color: rgba(184, 174, 247, 0.836);
+  /* padding: 0.3rem; */
+  border-radius: 0.2rem;
+}
+
+
+@media screen and (max-width: 768px) {
+  .App {
+    flex-direction: column;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
