@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker';
 // Config Data;
 const dataSize: number = 500;
 const minAge: number = 18;
-const maxAge: number = 40;
+const maxAge: number = 25;
 
 // Mock Data Generator
 export type user = {
