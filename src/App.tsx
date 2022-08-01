@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import './App.css';
-import LineChart from './components/lineChart';
+import LineChart from './components/LineChart';
 
 // mock data
 import users from './mockDB/users';
@@ -38,7 +38,7 @@ const App = observer(() => {
         <span>Users</span>
         <ul>
           {userStore.userData.length &&
-            Object.values(userStore.ageGroup)[userStore.activeIndex].map((name) => (
+            Object.values(userStore.ageGroup)[userStore.activeIndex].map((name: string) => (
               <li key={name}>{name}</li>
             ))}
         </ul>
