@@ -14,7 +14,7 @@
   justify-self: center;
 }
 .chart {
-  width: 95vw;
+  width: 70vw;
   transition: all 1s ease-out;
   max-height: 0;
   margin: 0 auto;
@@ -68,4 +68,11 @@
   color: rgba(184, 174, 247, 0.836);
   /* padding: 0.3rem; */
   border-radius: 0.2rem;
+}
+
+
+@media (max-width: 728px) {
+  .chart {
+    width: 95vw;
+  }
 }
