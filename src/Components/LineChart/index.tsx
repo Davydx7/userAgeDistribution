@@ -11,7 +11,6 @@ import {
   ChartEvent,
   ActiveElement,
   Chart,
-  ChartOptions,
   ActiveDataPoint
 } from 'chart.js';
 import { observer } from 'mobx-react-lite';
