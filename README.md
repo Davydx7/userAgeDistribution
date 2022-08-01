@@ -1,6 +1,6 @@
 # Graphing Illustration
 
-### Todos
+## Todos
 
 - [] make code splitting work
 - [] Make app load faster, refactor code
