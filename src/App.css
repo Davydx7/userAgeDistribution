@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  text-align: center;
   height: 100%;
   gap: 0.5rem;
 }
@@ -13,7 +14,7 @@
   justify-self: center;
 }
 .chart {
-  width: 45rem;
+  width: 95vw;
   transition: all 1s ease-out;
   max-height: 0;
   margin: 0 auto;
@@ -52,7 +53,8 @@
 .list ul {
  list-style: none;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  width: 95vw;
   margin: 0;
  gap: 0.5rem;
   background-color: rgb(26, 18, 39);
@@ -66,12 +68,4 @@
   color: rgba(184, 174, 247, 0.836);
   /* padding: 0.3rem; */
   border-radius: 0.2rem;
-}
-
-
-@media screen and (max-width: 768px) {
-  .App {
-    flex-direction: column;
-    align-items: center;
-  }
 }

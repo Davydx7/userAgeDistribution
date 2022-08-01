@@ -28,8 +28,10 @@ const App = observer(() => {
 
   return (
     <div className="App">
+      <h2>User Age Distribution</h2>
+      <h3>Click/tap on any point on the map to see list of users in the age groups</h3>
       <div className="topbar">
-        <button onClick={handleClick}>{show ? 'Hide Chart' : 'Show Chart'}</button>
+        <button onClick={handleClick}>{show ? '- Hide Chart -' : '+ Show Chart +'}</button>
       </div>
       <div className={`chart ${show ? 'open' : ''}`}>{show && <LineChart />}</div>
       <div className={`list ${show && userStore.showList ? 'open' : ''}`}>
